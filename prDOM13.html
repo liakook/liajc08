@@ -1,0 +1,137 @@
+<!-- PR : sort berdasarkan umur, dll... ada radio button, ada pake Array, atau pake 
+perbandingan berkali kali-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daftar Manusia</title>
+</head>
+<center>
+<head>
+    <style>
+        h1{
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+    <body>
+        <h1><b> Daftar Manusia </b></h1>
+    </body>
+    <body>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 350px;
+        }
+        th, td{
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody id='IsiTable'></tbody>
+        <tr>
+            <td>
+                <table id="t01" style="width:80%">
+                    <tr><td><input type="text" placeholder="Masukkan Nama"></td></tr>
+                </table> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="t02" style="width:80%">
+                    <tr><td><input type="text" placeholder="Masukkan Umur"></td></tr>
+                </table> 
+            </td>
+        </tr>
+        <tr><td>
+            Kelamin &nbsp;
+            <input type="radio" name="kelamin" id="perempuan">Perempuan
+            <input type="radio" name="kelamin" id="laki-laki">Laki-Laki 
+        </td></tr>
+        <tr>
+            <td>
+                <table id="t03" style="width:80%">
+                    <tr><td><input type="text" placeholder="Masukkan Pekerjaan"></td></tr>
+                </table> 
+            </td>
+        </tr>
+        <tr><td>
+            <input type="button" onclick="hasilData()" value="Submit" style="width: 20%">
+        </td></tr>
+        <tr><td> Sort Berdasarkan </td></tr>
+        <tr><td>
+            <input type="button" onclick="nama" value="Nama"style="width: 20%">
+            <input type="button" onclick="umur" value="Umur"style="width: 20%">
+            <input type="button" onclick="kelamin" value="Kelamin"style="width: 20%">
+            <input type="button" onclick="pekerjaan" value="Pekerjaan"style="width: 20%">
+        </td></tr>
+    </table>
+    <h1></h1>
+</center>
+<script>
+var data = [] 
+    class Manusia{
+        constructor(nama,umur,kelamin,pekerjaan){
+            this.nama = nama
+            this.umur = umur
+            this.kelamin = kelamin
+            this.pekerjaan = pekerjaan
+        }
+    }
+        function hasilData(){
+        var selektor = document.getElementsByTagName('input')
+        var nama = selektor[0].value
+        var umur = selektor[1].value
+        var kelamin = (selektor[2].value || selektor[3])
+        var pekerjaan = selektor[4].value
+        if(nama == '' || umur == '' || kelamin == '' || pekerjaan == ''){
+            document.getElementsByTagName('h1')[0].innerHTML = ''
+            document.getElementsByTagName('h1')[0].style.color = 'red'
+            document.getElementsByTagName('h1')[0].innerHTML = 'Harus Diisi'
+        }else{
+            var newMan = new Manusia(nama,umur,kelamin,pekerjaan)
+            data.push(newMan)
+            hasilData(data)
+            for(var i = 0; i <4; i++){  
+                selektor[i].value = ''
+            }
+        }
+        }
+        function tampilData(a){
+            var tampil = ''
+            for(var i =0; i<a.length; i++){
+                tampil += `<tr>
+                            <td>${a[i].nama}</td>
+                            <td>${a[i].umur}</td>
+                            <td>${a[i].kelamin}</td>
+                            <td>${a[i].pekerjaan}</td>
+                            <td><button>add</button></td>
+                            </tr>`
+            }
+        document.getElementById('IsiTable').innerHTML = tampil
+        }
+        
+        function filter(){
+            var inputNama = document.getElementsByTagName('input')[0].value
+            var inputUmur = document.getElementsByTagName('input')[1].value
+            var inputKelamin = document.getElementsByTagName('input')[2].value
+            var inputPekerjaan = document.getElementsByTagName('input')[4].value
+            var newData = []
+            for(var i =0; i < data.length; i++){
+                if(data[i].nama.startsWith(inputNama) && data[i].umur.startsWith(inputUmur) 
+                && data[i].umur.startsWith(inputUmur) && data[i].pekerjaan.startsWith(inputPekerjaan)){
+                    newData.push(data[i])}
+                    }
+                    tampilData(newData)
+        }
+          
+</script>
+</body>
+</html>
