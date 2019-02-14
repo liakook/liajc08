@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    table,th,td{
+        border: 1px solid blue;
+        border-style: groove;
+        padding: 30px;
+        margin: 50px;
+    }
+</style>
+<body>
+    <center>
+        <h1 id=berapatahun></h1>
+        <table>
+            <thead>
+                    <tr>
+                        <th>Jumlah Penduduk Awal</th>
+                        <th>Persentase Penduduk Melahirkan</th>
+                        <th>Jumlah Pendatang</th>
+                        <th>Target</th>
+                    </tr>
+                </thead>
+        </table>
+    </center>
+    <script>
+        function berapatahun(n,p,v,t){
+        var tahun = t/(n + (v + (n* (p/100))))
+            return tahun
+        }
+        document.getElementsByTagName('h1')[0].innerHTML = 'Perlu : ' + tahun + ' Tahun'
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ujian Valentine</title>
+</head>
+<style>
+    table,th,td{
+        border: 1px solid blue;
+        border-style: groove;
+        padding: 20px;
+        margin: 30px;
+    }
+</style>
+<body>
+        <Center>
+                <table id="isiTable">
+                
+                </table>
+                <h1></h1>
+                <table id="Table">
+        
+                </table>
+            </Center>
+        <script>
+            class DataMenu {
+                constructor(a,b,c){
+                    this.nama = a;
+                    this.harga = b;
+                    this.img = c;
+                }
+            }
+            var data = [
+                new DataMenu('Silverqueen', 15000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvH8MS2L1WTYMMZGdbjmDhqLp1mvWP5QaCtfz0PRZ7EylLELXO'),
+                new DataMenu('Rose Bouquet', 150000,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHXx12O04QbXgrbttkkfotP8ZRPC2WjLtKL7ZafyXn6FS9t5OO'),
+                new DataMenu('Teddy Bear', 300000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg63YrXWGlyHL3Y5P_f9wwGK30Yvwrd87CynudY626T86MD8FL'),
+                new DataMenu('Versace Perfume', 3000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl7PtJPVJVhR652dRJ-rslTaO-0VPRbu-Mh1xBVdoVbNBmo-c5yg')
+            ]
+            
+           
+            function tampil(arr){
+                var output = ''
+                var a = arr.map(function(item,index){
+                    return  `<tr>
+                                <td>${item.nama}</td>
+                                 <td>${item.harga}</td>
+                                <td><img src='${item.img}' width='100px'></td>
+                                <td><input type="button" value="Add to Cart" onclick="addToCart(${index})"></td>
+                             
+                            `
+                })
+                document.getElementById("isiTable").innerHTML = a.join('')
+            }
+            tampil(data)
+            function tampilCart(arr){
+                var output = ''
+                var a = arr.map(function(item,index){
+                    return  `<tr>
+                                <td>${item.nama}</td>
+                                 <td>${item.harga}</td>
+                                <td><img src='${item.img}' width='70px'></td>   
+                                <td><input type="button" value="delete" onclick="hapusCart(${index})"></td>                  
+                            `
+                })
+                document.getElementsByTagName('h1')[0].innerHTML = 'Keranjang Anda Berisi : ' + newData.length
+                if(newData == 0){
+                document.getElementsByTagName('h1')[0].innerHTML = "Keranjang Anda Kosong!"
+                }
+                document.getElementById("Table").innerHTML = a.join('')
+            }
+          
+            var newData = []
+            function addToCart(a){
+                newData.push(data[a])
+                var a = newData.map(function(item,index){
+                return  `<tr>
+                             <td>${item.nama}</td>
+                             <td>${item.harga}</td>
+                             <td><img src='${item.img}' width='70px'></td>
+                             <td><input type="button" value="delete" onclick="hapusCart(${index})"></td>
+                             </tr>
+                       `
+            })
+            document.getElementsByTagName('h1')[0].innerHTML = 'Keranjang Anda Berisi : ' + newData.length
+            document.getElementById("Table").innerHTML = a.join('')
+            }
+            function hapusCart(a){
+                if(window.confirm('Delete this item? ')){
+                newData.splice(a,1)
+                alert('Your item has been deleted!')
+                tampilCart(newData)
+                
+            }
+            }
+    </script>
+</body>
+</html>
