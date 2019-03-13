@@ -1,0 +1,23 @@
+<script>
+    
+arr = []
+nomerUrutan = () => {
+    hasil = 0
+    for (var i = 0; i < arr.length; i++) {
+        hasil += parseInt(arr[i])
+    }
+    return document.write(`${arr}`)
+}
+
+do {
+    proteksi = true
+    input = prompt('Masukkan Angka')
+    if(input == null || isNaN(input) == true){
+        nomerUrutan()
+        proteksi = false
+    } else {
+        arr.push(input)
+    }
+} while (proteksi == true)
+
+</script>

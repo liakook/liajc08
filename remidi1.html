@@ -1,0 +1,70 @@
+<script>
+
+// No. 1a
+arr = []
+
+ganjiGenap = () => {
+    hasil = 0
+    for (var i = 0; i < arr.length; i++) {
+        hasil += parseInt(arr[i])
+    }
+    return document.write(`${arr}`)
+}
+
+do
+{   proteksi = true
+    input = parseInt(prompt('Masukkan Angka'))
+    
+    if(input % 2 == 0){
+        alert(input + ' Adalah Bilangan Genap')
+    }else if(input == null || isNaN(input) == true){
+        arr.push(input)
+    }else{
+        alert(input + ' Adalah Bilangan Ganjil')
+    }
+   
+}while(proteksi == true)
+
+// No. 1b
+arr = []
+numAverage = () => {
+    hasil = 0
+    for (var i = 0; i < arr.length; i++) {
+        hasil += parseInt(arr[i])
+    }
+    return document.write(`Average dari ${arr} = ${(hasil/arr.length)}`)
+}
+
+do {
+    proteksi = true
+    input = prompt('Masukkan Angka')
+    if(input == null || isNaN(input) == true){
+        numAverage()
+        proteksi = false
+    } else {
+        arr.push(input)
+    }
+} while (proteksi == true)
+
+// No. 1c
+
+var arr = [1,2,3]
+
+for(var i=0;i<arr.length;i++)
+    {    
+        if(i == 0)
+        { 
+        var nilai_tertinggi = arr[i];
+        }
+        else
+        {
+            if(arr[i] > nilai_tertinggi)
+            {
+                nilai_tertinggi = arr[i];
+            }
+        }              
+    }  
+
+alert('Nilai Tertinggi adalah' + ' ' + nilai_tertinggi)
+
+</script>
